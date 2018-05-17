@@ -22,8 +22,7 @@
 *.zip
 *.png
 *.jpg
-*Icon
-*.Icon
+Icon^M^M
 
 
 
