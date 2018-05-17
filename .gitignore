@@ -22,9 +22,10 @@
 *.zip
 *.png
 *.jpg
+*.pdf
 Icon^M^M
-Icon[\r]
-
+Icon\r\r
+Icon[^M]
 
 
 # Logs and databases #
