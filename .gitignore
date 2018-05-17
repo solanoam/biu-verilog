@@ -23,6 +23,7 @@
 *.png
 *.jpg
 Icon^M^M
+Icon[\r]
 
 
 
