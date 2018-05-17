@@ -20,6 +20,9 @@
 *.rar
 *.tar
 *.zip
+*.png
+*.jpg
+*Icon
 
 
 # Logs and databases #
