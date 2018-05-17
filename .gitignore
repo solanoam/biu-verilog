@@ -23,6 +23,8 @@
 *.png
 *.jpg
 *Icon
+*.Icon
+
 
 
 # Logs and databases #
