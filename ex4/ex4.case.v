@@ -22,12 +22,12 @@ endmodule
 
 module PENC2_TB();
     reg [7:0]in;
-    wire [2:0]out; 
+    wire [2:0]out;
     wire valid;
     PENC2 test_module(.in(in), .out(out), .valid(valid));
-	initial	 
+	initial
 		begin
-            $monitor($time, " in=%b, out=%b, valid=%b", in, out, valid);		
+            $monitor($time, " in=%b, out=%b, valid=%b", in, out, valid);
             $dumpfile("ex4.case.vcd");
             $dumpvars(0, PENC2_TB);
 			#1 in=8'b00000000;
