@@ -25,12 +25,16 @@ module PENC2_TB();
     wire [2:0]out;
     wire valid;
     PENC2 test_module(.in(in), .out(out), .valid(valid));
+<<<<<<< current
 	initial
 		begin
+=======
+	initial	begin
+>>>>>>> before discard
             $monitor($time, " in=%b, out=%b, valid=%b", in, out, valid);
             $dumpfile("ex4.case.vcd");
             $dumpvars(0, PENC2_TB);
-			#1 in=8'b00000000;
+            #1 in=8'b00000000;
             #1 in=8'b00000001;
             #1 in=8'b00000010;
             #1 in=8'b00000100;
