@@ -1,4 +1,4 @@
-module Xmult #(parameter BYTE=8, parameter WORD=32, parameter SENTENCE=128) (Input_Byte, Output_Byte); 
+module Xmult #(parameter BYTE=8, parameter DWORD=32, parameter SENTENCE=128) (Input_Byte, Output_Byte);
 input [BYTE-1:0] Input_Byte;
 output wire [BYTE-1:0] Output_Byte;
 // checks the MSB of the Input_Byte: if it is 0  shift left
