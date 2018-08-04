@@ -1,10 +1,10 @@
 module Set_Columns # ( parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128 )
-input [ WORD-1 : 0 ] in,
+input [ WORD-1 : 0 ] in;
 output [ WORD-1 : 0 ] out;
   wire [ BYTE-1 : 0 ] B1 , B2 , B3 , B4 ;
   wire [ BYTE-1 : 0 ] Bmult1 , Bmult2 , Bmult3 , Bmult4 ;
   wire [ BYTE-1 : 0 ] Bmult1_3 , Bmult2_3 , Bmult3_3 , Bmult4_3 ;
-  wire [ BYTE-1 : 0 ] Out_B1 , Out_B2 , Out_B3 , Out_B4 ;
+  wire [ BYTE-1 : 0 ] out_b1 , Out_B2 , Out_B3 , Out_B4 ;
   assign { B4 , B3 , B2 , B1 } = in ; // concatenation from the input to 4 bytes
   assign Bmult1 = (!B1[BYTE-1]) ? {B1[BYTE-2:0],1'b0} : {B1[BYTE-2:0],1'b0} ^ 8'h1B;
   assign Bmult2 = (!B2[BYTE-1]) ? {B2[BYTE-2:0],1'b0} : {B2[BYTE-2:0],1'b0} ^ 8'h1B;
