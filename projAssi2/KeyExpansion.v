@@ -9,17 +9,16 @@ parameter LENGTH = 128
 )
 (
 input [LENGTH-1:0] round_Key,
-input [3:0] round_Number,
-output [LENGTH-1:0] next_Round_Key
+input [3:0] roundNum,
+output [LENGTH-1:0] nkey
 );
-  wire [LENGTH-1:0] rcon_out , rotword_out , subword_out , wire_Right;
-  Rcon Rcon_init (round_Number , rcon_out) ; // calling to 'Rcon' module
-  RotWord RotWord_init (round_Key[DWORD-1:0] , rotword_out) ; // calling to 'RotWord' module
-  SubWord SubWord_init (rotword_out , subword_out) ; // calling to 'SubWord' module
-  // computing next round key by the xor equations
-  assign wire_Right = rcon_out ^ subword_out ;
-  assign next_Round_Key[LENGTH-1:3*DWORD] = wire_Right ^ round_Key[LENGTH-1:3*DWORD];
-  assign next_Round_Key[3*DWORD-1:2*DWORD] = next_Round_Key[LENGTH-1:3*DWORD] ^ round_Key[3*DWORD-1:2*DWORD];
-  assign next_Round_Key[2*DWORD-1:DWORD] = next_Round_Key[3*DWORD-1:2*DWORD] ^ round_Key[2*DWORD-1:DWORD];
-  assign next_Round_Key[DWORD-1:0] = next_Round_Key[2*DWORD-1:DWORD] ^ round_Key[DWORD-1:0];
+  wire [DWORD-1:0] rcOut , rotOut , subOut , rightWire;
+  Rcon Rcon_init (roundNum , rcOut) ;
+  RotWord RotWord_init (round_Key[DWORD-1:0] , rotOut) ;
+  SubWord SubWord_init (rotOut , subOut) ;
+  assign rightWire = rcOut ^ subOut ;
+  assign nkey[LENGTH-1:3*DWORD] = rightWire ^ round_Key[LENGTH-1:3*DWORD];
+  assign nkey[3*DWORD-1:2*DWORD] = nkey[LENGTH-1:3*DWORD] ^ round_Key[3*DWORD-1:2*DWORD];
+  assign nkey[2*DWORD-1:DWORD] = nkey[3*DWORD-1:2*DWORD] ^ round_Key[2*DWORD-1:DWORD];
+  assign nkey[DWORD-1:0] = nkey[2*DWORD-1:DWORD] ^ round_Key[DWORD-1:0];
 endmodule

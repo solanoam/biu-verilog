@@ -7,7 +7,7 @@ module KeyExpansion # ( parameter BYTE = 8 , parameter WORD = 32 , parameter SEN
 
 wire [ WORD-1 : 0 ] rcon_out , rotword_out , subword_out , wire_Right ;
 
-Rcon a ( round_Number[3:0] , rcon_out ) ; // calling to 'Rcon' module
+Rcon a ( round_Number , rcon_out ) ; // calling to 'Rcon' module
 
 RotWord b ( round_Key [ WORD-1 : 0 ] , rotword_out ) ; // calling to 'RotWord' module
 SubWord c ( rotword_out , subword_out ) ; // calling to 'SubWord' module

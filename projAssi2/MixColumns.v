@@ -1,21 +1,19 @@
-`include "Set_Columns.v"
+`include "MixColumnsAux.v"
 module MixColumns # (
 parameter BYTE = 8,
 parameter DWORD = 32,
 parameter LENGTH = 128
 )
 (
-input [ LENGTH-1 : 0 ] in,
-output [ LENGTH-1 : 0 ] out
+input [ LENGTH-1 : 0 ] inpt,
+output [ LENGTH-1 : 0 ] oupt
 );
-	wire [ DWORD-1 : 0 ] W0 , W1 , W2 , W3 ;
-	wire [ DWORD-1 : 0 ] WA0 , WA1 , WA2 , WA3 ;
-	assign { W3 , W2 , W1 , W0 } = in ; // concatenation from the input to 4 words
-	// calling to 'set columns' module
-	Set_Columns set0 ( W0 , WA0 ) ; // lsb
-	Set_Columns set1 ( W1 , WA1 ) ; // bigger word than lsb
-	Set_Columns set2 ( W2 , WA2 ) ; // smaller word than msb
-	Set_Columns set3 ( W3 , WA3 ) ; // msb
-	// concatenation from the 4 bytes of the output set_columns to output
-	assign out = { WA3 , WA2 , WA1 , WA0 } ;
+	wire [ DWORD-1 : 0 ] wrd0 , wrd1 , wrd2 , wrd3 ;
+	wire [ DWORD-1 : 0 ] wrdOpt0 , wrdOpt1 , wrdOpt2 , wrdOpt3 ;
+	assign { wrd3 , wrd2 , wrd1 , wrd0 } = inpt ;
+	MixColumnsAux col0 ( wrd0 , wrdOpt0 ) ;
+	MixColumnsAux col1 ( wrd1 , wrdOpt1 ) ;
+	MixColumnsAux col2 ( wrd2 , wrdOpt2 ) ;
+	MixColumnsAux col3 ( wrd3 , wrdOpt3 ) ;
+	assign oupt = { wrdOpt3 , wrdOpt2 , wrdOpt1 , wrdOpt0 } ;
 endmodule
