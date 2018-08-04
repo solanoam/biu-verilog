@@ -1,6 +1,13 @@
-module Set_Columns # ( parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128 )
-input [ WORD-1 : 0 ] in;
-output [ WORD-1 : 0 ] out;
+module Set_Columns #
+(
+parameter BYTE = 8 ,
+parameter DWORD = 32 ,
+parameter LENGTH = 128
+)
+(
+input [ DWORD-1 : 0 ] in,
+output [ DWORD-1 : 0 ] out
+);
   wire [ BYTE-1 : 0 ] B1 , B2 , B3 , B4 ;
   wire [ BYTE-1 : 0 ] Bmult1 , Bmult2 , Bmult3 , Bmult4 ;
   wire [ BYTE-1 : 0 ] Bmult1_3 , Bmult2_3 , Bmult3_3 , Bmult4_3 ;

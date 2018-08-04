@@ -1,7 +1,13 @@
 `include "Sbox.v"
-module SubBytes # ( parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128 )
-input [ LENGTH-1 : 0 ] in;
-output [ LENGTH-1 : 0 ] out;
+module SubBytes # (
+parameter BYTE = 8,
+parameter DWORD = 32,
+parameter LENGTH = 128
+)
+(
+input [ LENGTH-1 : 0 ] in,
+output [ LENGTH-1 : 0 ] out
+);
 	Sbox sbox11 ( in [ 1*BYTE-1 : 0 ] , out [ BYTE-1 : 0 ] ) ;
 	Sbox sbox12 ( in [ 2*BYTE-1 : 1*BYTE ] , out [ 2*BYTE-1 : 1*BYTE ] ) ;
 	Sbox sbox13 ( in [ 3*BYTE-1 : 2*BYTE ] , out [ 3*BYTE-1 : 2*BYTE ] ) ;

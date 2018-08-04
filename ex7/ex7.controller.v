@@ -25,7 +25,7 @@ module CONTROLLER(opcode, clk, nrst, out_lights);
     always @ (posedge clk) begin
         if (!nrst && rdy) begin
             nstate <= opcode;
-        end 
+        end
     end
     //state machine
     always @ (posedge clk) begin
@@ -74,7 +74,7 @@ module CONTROLLER(opcode, clk, nrst, out_lights);
                     counter = 2'b00;
                     nstate = TURN_LEFT;
                 end
-            end            
+            end
             HAZZARD: begin
                 if (blink == 1'b0) begin
                     blink = 1'b1;
@@ -90,10 +90,10 @@ module CONTROLLER(opcode, clk, nrst, out_lights);
             BRAKE: begin
                 out_lights = 6'b111111;
             end
-        endcase 
+        endcase
     end
 endmodule
-            
+
 module CONTROLLER_TB();
     reg [2:0] opcode;
     reg clk = 0;
@@ -101,12 +101,12 @@ module CONTROLLER_TB();
     always #1 clk = !clk;
     wire [5:0]out_lights;
     CONTROLLER test_module(.clk(clk), .opcode(opcode), .nrst(nrst), .out_lights(out_lights));
-	initial	         
+	initial
 		begin
-            $monitor($time, "out_lights=%b, clk=%b, opcode=%b, nrst=%b", out_lights, clk, opcode, nrst);		
+            $monitor($time, "out_lights=%b, clk=%b, opcode=%b, nrst=%b", out_lights, clk, opcode, nrst);
             $dumpfile("controller.vcd");
             $dumpvars(0, CONTROLLER_TB);
-			#4 nrst=1'b0;
+			      #4 nrst=1'b0;
             #4 opcode=3'b000;
             #4 opcode=3'b001;
             #4 opcode=3'b001;

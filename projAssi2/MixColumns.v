@@ -1,7 +1,13 @@
 `include "Set_Columns.v"
-module MixColumns # (parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128 )
-input [ LENGTH-1 : 0 ] in;
-output [ LENGTH-1 : 0 ] out;
+module MixColumns # (
+parameter BYTE = 8,
+parameter DWORD = 32,
+parameter LENGTH = 128
+)
+(
+input [ LENGTH-1 : 0 ] in,
+output [ LENGTH-1 : 0 ] out
+);
 	wire [ DWORD-1 : 0 ] W0 , W1 , W2 , W3 ;
 	wire [ DWORD-1 : 0 ] WA0 , WA1 , WA2 , WA3 ;
 	assign { W3 , W2 , W1 , W0 } = in ; // concatenation from the input to 4 words

@@ -1,6 +1,13 @@
-module Rcon # ( parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128 )
-input [ 3 : 0 ] round;
-output [ DWORD-1 : 0 ] out;
+module Rcon #
+(
+parameter BYTE = 8,
+parameter DWORD = 32,
+parameter LENGTH = 128
+)
+(
+input [ 3 : 0 ] round,
+output [ DWORD-1 : 0 ] out
+);
 	// computing by the round what is the output of the rcon x^round (x=02h);
 	assign out = (round == 4'd0) ? 32'h01_000000 :
 		(round == 4'd1) ? 32'h02_000000 :

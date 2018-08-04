@@ -1,9 +1,16 @@
-module Sbox # ( parameter BYTE = 8 , parameter DWORD = 32 , parameter LENGTH = 128)
-input [ BYTE-1 : 0 ] num;
-output reg [ BYTE-1 : 0 ] out;
-	always @ ( num )
+module Sbox #
+(
+parameter BYTE = 8,
+parameter DWORD = 32,
+parameter LENGTH = 128
+)
+(
+input [ BYTE-1 : 0 ] num,
+output reg [ BYTE-1 : 0 ] out
+);
+	always @ (num)
 		begin
-			case( num )
+			case(num)
 				8'h00 : begin   out = 8'h63 ;  end
 				8'h01 : begin   out = 8'h7c ;  end
 				8'h02 : begin   out = 8'h77 ;  end
